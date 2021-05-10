@@ -1,0 +1,5 @@
+AuthUserFile /home/superredhosting/.htpasswd
+AuthType Basic
+AuthName "UnitTracker Access"
+
+Require user fn4790

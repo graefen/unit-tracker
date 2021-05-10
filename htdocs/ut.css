@@ -1,0 +1,377 @@
+
+html,
+body {
+    font-family: "Trebuchet MS", "Lucida Grande", "Nimbus Sans L", sans-serif;
+    color: #666;
+    margin: 0 0.75em 0.75em;
+}
+@media screen and (min-width : 640px) {
+    html,
+    body {
+        margin: 0.5em 1em 1em;
+    }
+}
+body {
+    min-height: 30em;
+}
+body.no-mouse,
+body.no-mouse * {
+    cursor: url(/img/cursor-none.png), auto !important;
+    cursor: url(/img/cursor-none.cur), auto !important;
+}
+.processing {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    z-index: 1000;
+    background: transparent url(/img/processing.gif) no-repeat scroll center 50%;
+}
+/* header & nav */
+.page-title {
+    line-height: 1;
+    color: #ff779a;
+    margin-bottom: 0.25em;
+}
+.page-sub-title {
+    color: #ff779a;
+    font-size: 1em;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+.page-summary {
+    
+}
+    .page-summary .status {
+        display: inline-block;
+        text-align: center;
+        color: #fff;
+        background-color: #ff779a;
+        padding: 0.75em;
+        margin: 0 0.25em 0.25em 0;
+    }
+    .page-summary .status.act,
+    .page-summary .status.sem {
+        width: 2.75em;
+    }
+    .page-summary .status.car,
+    .page-summary .status.unit-prod {
+        width: 11.75em;
+    }
+        .page-summary .q {
+            display: block;
+            font: bold 1.75em/1 "Andale Mono", "Lucida Console", monospace;
+        }
+        .page-summary .label {
+            display: block;
+            font-size: 0.6875em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+.page-toolbar {
+    border-bottom: 1px solid #fbc;
+}
+.page-tools {
+    display: block;
+    list-style: none;
+    padding-left: 0;
+    margin-right: 5%;
+    margin-left: 0;
+}
+    .page-tools .tool {
+        position: relative;
+        list-style: none;
+        display: inline-block;
+        padding-left: 0;
+        margin-left: 0;
+    }
+    .page-tools .tool + .tool {
+        margin-left: 1em;
+    }
+/* main member list */
+.members-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+    .members-list .unit-member.empty,
+    .members-list .unit-member.template {
+        display: none;
+    }
+    .members-list .unit-member {
+        position: relative;
+        cursor: pointer;
+    }
+    .members-list .unit-member:after {
+        content: "▼";
+        position: absolute;
+        right: 0.75em;
+        top: 0.625em;
+        opacity: 0.75;
+    }
+    .members-list .unit-member.expanded:after {
+        content: "▲";
+    }
+    .members-list .unit-member,
+    .members-list.empty .unit-member.empty {
+        display: block;
+    }
+    .members-list .unit-member:nth-child(even) {
+        background-color: #eee;
+    }
+        .members-list .unit-member .summary > span {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0.5em 0 0.5em 1%;
+        }
+        .members-list .unit-member .summary > .member-status {
+            width: 24%;
+            text-align: center;
+        }
+        .members-list .unit-member .summary > .member-name {
+            width: 60%;
+            vertical-align: top;
+            padding-top: 0.625em;
+        }
+        .members-list .unit-member.status-N .member-status,
+        .members-list .unit-member.status-N .member-name {
+            color: #07b;
+        }
+        .members-list .unit-member.status-I .member-status,
+        .members-list .unit-member.status-I .member-name {
+            color: #e70;
+        }
+        .members-list .unit-member.status-T .member-status,
+        .members-list .unit-member.status-T .member-name {
+            color: #c00;
+        }
+        .members-list .unit-member.status-A .member-status,
+        .members-list .unit-member.status-A .member-name {
+            color: #080;
+        }
+        .members-list .unit-member .summary > .member-q-status,
+        .members-list .unit-member .summary > .member-sq-status {
+            width: 24%;
+            text-align: center;
+            padding-top: 0;
+            margin-top: -0.75em;
+        }
+        .members-list .unit-member .summary > .member-q-status {
+            margin-left: 23%;
+        }
+            .members-list .unit-member .member-status .a,
+            .members-list .unit-member .member-status .gap,
+            .members-list .unit-member .member-q-status .q,
+            .members-list .unit-member .member-q-status .gap,
+            .members-list .unit-member .member-sq-status .q,
+            .members-list .unit-member .member-sq-status .gap {
+                display: block;
+            }
+            .members-list .unit-member .member-status .a,
+            .members-list .unit-member .member-q-status .q,
+            .members-list .unit-member .member-sq-status .q {
+                font: bold 1.5em/1 "Andale Mono", "Lucida Console", monospace;
+            }
+            .members-list .unit-member .member-q-status .q,
+            .members-list .unit-member .member-sq-status .q {
+                opacity: 0.3;
+            }
+            .members-list .unit-member .member-q-status.qualified .q,
+            .members-list .unit-member .member-sq-status.qualified .q {
+                opacity: 1;
+            }
+            .members-list .unit-member .member-status .gap,
+            .members-list .unit-member .member-q-status .gap,
+            .members-list .unit-member .member-sq-status .gap {
+                font-size: 0.6875em;
+                line-height: 1;
+                color: #888;
+            }
+    .members-list .unit-member .details {
+        max-height: 0;
+        overflow: hidden;
+        -moz-transition: max-height 0.25s ease-out, padding-top 0.25s ease-out, padding-bottom 0.25s ease-out;
+        -webkit-transition: max-height 0.25s ease-out, padding-top 0.25s ease-out, padding-bottom 0.25s ease-out;
+        transition: max-height 0.25s ease-out, padding-top 0.25s ease-out, padding-bottom 0.25s ease-out;
+        padding: 0 0 0 26%;
+    }
+    .members-list .unit-member.expanded .details {
+        max-height: 7em;
+        padding-top: 0.25em;
+        padding-bottom: 1em;
+    }
+        .members-list .unit-member .details > .member-checks {
+            display: block;
+            font-size: 0.8125em;
+            text-transform: uppercase;
+        }
+            .members-list .unit-member .member-checks label {
+                white-space: nowrap;
+                display: block;
+            }
+            .members-list .unit-member .member-checks label + label {
+                margin-left: 0;
+            }
+        .members-list .unit-member .details > .member-actions {
+            display: block;
+            padding-top: 0.5em;
+        }
+@media screen and (min-width : 480px) {
+    .members-list .unit-member .summary > .member-status {
+        width: 15%;
+    }
+    .members-list .unit-member .summary > .member-name {
+        width: 38%;
+    }
+    .members-list .unit-member .summary > .member-q-status,
+    .members-list .unit-member .summary > .member-sq-status {
+        width: 12%;
+        padding-top: 0.5em;
+        margin-top: 0;
+    }
+    .members-list .unit-member .summary > .member-q-status {
+        margin-left: 0;
+    }
+    .members-list .unit-member .details {
+        padding-left: 17.5%;
+    }
+}
+@media screen and (min-width : 640px) {
+    .members-list .unit-member .summary > .member-status {
+        width: 9%;
+    }
+    .members-list .unit-member .details {
+        padding-left: 11.25%;
+    }
+}
+@media screen and (min-width : 800px) {
+    .members-list .unit-member .summary > .member-status {
+        vertical-align: baseline;
+        padding-top: 0.5em;
+    }
+    .members-list .unit-member .summary > .member-q-status,
+    .members-list .unit-member .summary > .member-sq-status {
+        width: 9%;
+        vertical-align: top;
+    }
+}
+@media screen and (min-width : 1100px) {
+    .members-list .unit-member .summary > .member-status {
+        width: 6%;
+    }
+    .members-list .unit-member .summary > .member-name {
+        width: 45%;
+    }
+    .members-list .unit-member .summary > .member-q-status,
+    .members-list .unit-member .summary > .member-sq-status {
+        width: 7%;
+    }
+    .members-list .unit-member .member-checks label {
+        display: inline;
+    }
+    .members-list .unit-member .member-checks label + label {
+        margin-left: 1em;
+    }
+    .members-list .unit-member .details {
+        padding-left: 8%;
+    }
+}
+/* dialogs */
+.dialog {
+    position: absolute;
+    overflow: hidden;
+    z-index: 100;
+    width: 14.5em;
+    max-height: 0;
+    text-align: left;
+    background-color: #fff;
+    padding: 0 1.25em;
+    border: 1px solid #ddd;
+    border-width: 0 1px;
+    box-shadow: 0 4px 6px #ccc;
+    -moz-transition: all 0.25s ease-out;
+    -webkit-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+.dialog.open {
+    max-height: 20em;
+    padding-top: 0.75em;
+    padding-bottom: 1.5em;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+.add-member-dialog {
+    left: 0;
+}
+.add-order-dialog {
+    left: 1.5em;
+}
+    .dialog .dialog-title {
+        padding-bottom: 0.375em;
+        border-bottom: 1px solid #ddd;
+        margin: 0;
+    }
+    .dialog .buttons {
+        float: right;
+        margin-top: 1.5em;
+        margin-bottom: 0;
+    }
+    .dialog label {
+        display: block;
+        font-size: 0.875em;
+        color: #bbb;
+        text-transform: uppercase;
+        padding-bottom: 0.25em;
+    }
+    .dialog .inline-group {
+        float: left;
+        margin-bottom: 0;
+    }
+    .dialog .inline-group + .inline-group {
+        margin-left: 0;
+    }
+    .add-member-dialog p.inline-group:nth-of-type(2n+1) {
+        margin-left: 0;
+    }
+    .dialog .inline-group + p:not(.inline-group) {
+        clear: left;
+    }
+    .dialog input[type="text"],
+    .dialog select {
+        font-size: 0.875em;
+    }
+    #add-member-firstname,
+    #add-member-lastname,
+    #add-member-recruit-date,
+    #add-order-amount,
+    #add-order-date {
+        width: 16em;
+    }
+    #add-member-recruiter {
+        width: 16.5em;
+    }    
+@media screen and (min-width : 480px) {
+    .dialog {
+        width: 22em;
+    }
+    .dialog .inline-group + .inline-group {
+        margin-left: 1em;
+    }
+    #add-member-firstname,
+    #add-member-lastname,
+    #add-member-recruit-date {
+        width: 11.5em;
+    }
+    #add-member-recruiter,
+    #add-order-amount {
+        width: 12em;
+    }
+    #add-order-date {
+        width: 11em;
+    }
+}
+@media screen and (min-width : 640px) {
+    .add-order-dialog {
+        left: 2em;
+    }
+}
